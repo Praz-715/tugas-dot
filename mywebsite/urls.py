@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from monitorwfh.viewset_api import JabatanView, DivisiView
+from monitorwfh.viewset_api import JabatanView, DivisiView, KaryawanView, AbsensiView, ListJobView
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('jabatan', JabatanView)
 router.register('divisi', DivisiView)
+router.register('karyawan', KaryawanView)
+router.register('absensi', AbsensiView)
+router.register('listjob', ListJobView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
