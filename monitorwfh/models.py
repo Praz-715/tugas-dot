@@ -41,7 +41,7 @@ class Karyawan(models.Model):
     nama_karyawan   = models.CharField(max_length=100, null=False, blank=False)
     alamat          = models.TextField()
     jk              = models.CharField(max_length=10, choices=[('L','Laki-laki'),('P','Perempuan')], null=False, blank=False)
-    agama           = models.CharField(max_length=10, choices=[('IS','Islam'),('KR','Kristen'),('HI','Hindu'),('BD','Budha'),('KH','Konghucu')], null=True, blank=True)
+    agama           = models.CharField(max_length=10, choices=[('Islam','Islam'),('Kristen','Kristen'),('Hindu','Hindu'),('Budha','Budha'),('Konghucu','Konghucu')], null=True, blank=True)
     tlp             = models.CharField(max_length=13, null=True, blank=True)
     jabatan         = models.ForeignKey(Jabatan, on_delete=models.CASCADE)
     divisi          = models.ForeignKey(Divisi, on_delete=models.CASCADE)
@@ -83,6 +83,7 @@ class ListJob(models.Model):
     deadline    = models.DateTimeField(null=True, blank=True)
     status      = models.BooleanField(auto_created=False)
     nik         = models.ForeignKey(Karyawan, on_delete=models.CASCADE)
+    progres     = models.PositiveIntegerField(default=50, null=True, blank=True)
     class Meta:
         """Meta definition for ListJob."""
 
@@ -91,7 +92,7 @@ class ListJob(models.Model):
 
     def __str__(self):
         """Unicode representation of ListJob."""
-        pass
+        return "{} - {}".format(self.nik, self.nama_job)
 
 
 

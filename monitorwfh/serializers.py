@@ -25,4 +25,4 @@ class AbsensiSerializer(serializers.ModelSerializer):
 class ListJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListJob
-        fields = ['id', 'nama_job', 'deadline', 'status', 'nik']
+        fields = ['id', 'nama_job', 'deadline', 'status', 'nik', 'progres']
